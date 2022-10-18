@@ -1,6 +1,6 @@
 from os import makedirs, path
 from pytube import Playlist, YouTube
-from fun.func import fix_jr
+from funciones.func import fix_jr
 from pytube.cli import on_progress
 
 contador = 0
