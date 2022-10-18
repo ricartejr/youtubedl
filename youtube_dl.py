@@ -21,10 +21,9 @@ try:
             pastas = f'{path.abspath(c_padrao + "/" + autor_p + "/" + fix_jr(p_title))}'
             makedirs(pastas, exist_ok=True)
             video = video.streams.get_by_itag(22)
-            new_name = f'{autor_v + "-" + titulo_v}.mp4'
+            new_name = f'{autor_v + " - " + titulo_v}.mp4'
             print(f'-> {autor_v} - {titulo_v}')
-            print('\n' + video.default_filename + '\n')
-            # video.download(output_path=pastas, filename=new_name)
+            video.download(output_path=pastas, filename=new_name)
         except KeyboardInterrupt:
             print('\nCancelado pelo usuario\n')
             break
