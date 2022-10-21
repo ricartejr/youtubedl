@@ -23,7 +23,7 @@ try:
             video = video.streams.get_by_itag(22)
             new_name = f'{autor_v + " - " + titulo_v}.mp4'
             print(f'-> {autor_v} - {p_titulo} - {titulo_v}')
-            # video.download(output_path=pastas, filename=new_name)
+            video.download(output_path=pastas, filename=new_name)
         except KeyboardInterrupt:
             print('\nCancelado por usuario\n')
             break
