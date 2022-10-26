@@ -3,6 +3,7 @@ from pytube import Playlist, YouTube
 from funciones.func import fix_jr
 from pytube.cli import on_progress
 
+
 contador_videos = 0
 contador_error = 0
 lista_de_errores = ['']
