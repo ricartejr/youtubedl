@@ -41,6 +41,8 @@ try:
                 print(nome)
             else:
                 print('\n')
+        else:
+            print(f'-> Errores Total [ 0 ]\n\n')
 
 except KeyError:
     print('-> ERROR - Playlist Invalida')
