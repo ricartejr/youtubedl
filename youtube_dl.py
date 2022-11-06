@@ -38,7 +38,7 @@ try:
         if contador_error >= 1:
             print(f'-> Errores Total [ {contador_error} ]')
             for nome in lista_de_errores:
-                print(nome)
+                print(nome) 
             else:
                 print('\n')
         else:
