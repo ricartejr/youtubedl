@@ -2,13 +2,14 @@ from os import makedirs, path
 from pytube import Playlist, YouTube
 from funciones.func import fix_jr
 from pytube.cli import on_progress
+from os import system
 
-
+system('cls')
 contador_videos = 0
 contador_error = 0
 lista_de_errores = ['']
 c_padrao = r'D:/VIDEOS/Videos YT/1 - Python Downloads'
-url_yt = Playlist(input('YOUTUBE URL ->'))
+url_yt = Playlist(input('YOUTUBE URL -> '))
 
 try:
     for video in url_yt.video_urls:
@@ -38,7 +39,7 @@ try:
         if contador_error >= 1:
             print(f'-> Errores Total [ {contador_error} ]')
             for nome in lista_de_errores:
-                print(nome) 
+                print(nome)
             else:
                 print('\n')
         else:
