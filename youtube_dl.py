@@ -1,8 +1,8 @@
-from os import makedirs, path
+from os import makedirs, path, system
 from pytube import Playlist, YouTube
-from funciones.func import fix_jr
 from pytube.cli import on_progress
-from os import system
+from funciones.func import fix_jr
+
 
 system('cls')
 contador_videos = 0
