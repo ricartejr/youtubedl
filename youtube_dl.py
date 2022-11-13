@@ -6,6 +6,7 @@ from rich.console import Console
 
 
 system('cls')
+cont_total = 0
 contador_videos = 0
 contador_error = 0
 lista_de_errores = ['']
@@ -18,7 +19,7 @@ try:
     url_yt = Playlist(C.input('[r b] YOUTUBE URL [/] -> '))
     print('')
     for video in url_yt.video_urls:
-        contador_videos += 1
+        # print(f'{video}')
         try:
             video = YouTube(video, on_progress_callback=on_progress)
             titulo_v = fix_jr(video.title)
@@ -31,26 +32,40 @@ try:
             new_name = f'{autor_v + " - " + titulo_v}.mp4'
             C.print(
                 f'-> [r b] {autor_v} [/] - [bright_red on grey93 b] {p_titulo} [/] - [bright_green on grey93 b] {titulo_v} [/]')
-            # video.download(output_path=pastas, filename=new_name)
+            video.download(output_path=pastas, filename=new_name)
         except KeyboardInterrupt:
             system('cls')
             C.print('[r b] Cancelado por usuario [/]\n')
             break
         except AttributeError:
+            # ! Contador de errores y agrega a una lista
             contador_error += 1
             lista_de_errores.append(f'{autor_v} - {titulo_v}')
-        finally:
             pass
-            # print(f'\n{"":-<120}')
-    else:
-        print(f'\n-> Download Total [ {contador_videos} ]\n')
-        if contador_error >= 1:
-            print(f'-> Errores Total [ {contador_error} ]')
-            for nome in lista_de_errores:
-                print(nome)
-            else:
-                print('\n')
         else:
-            print(f'-> Errores Total [ 0 ]\n\n')
+            # ! Si descarga sin problema adiciona al contador
+            contador_videos += 1
+        finally:
+            # ! Conta el total de interaciones urls
+            cont_total += 1
+            pass
+    else:
+        C.rule('')
+        C.print(f'\n-> Download [ {contador_videos} / {cont_total} ]\n')
+        if contador_error >= 1:
+            C.print(
+                f'-> Errores Total [bright_red on grey93 b] {contador_error} [/]')
+            for nome in lista_de_errores:
+                print(f'{nome}')
+            else:
+                print('')
+        else:
+            C.print(f'-> Errores Total [bright_red on grey93 b] 0 [/]\n\n')
 except KeyError:
-    print('-> ERROR - Playlist Invalida')
+    C.print('-> ERROR - Playlist Invalida')
+
+# link de prueba 3 videos
+# https://www.youtube.com/playlist?list=PLFHT61jJ5V-4VyZyqUlXAdADsHD2W2NZa
+
+# link con 60 videos
+# https://www.youtube.com/playlist?list=PLZF7DG3oXtDgylbBYyTxrZaHUhn4WHVH8
