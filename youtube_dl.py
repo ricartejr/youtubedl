@@ -34,20 +34,18 @@ try:
                 f'-> [r b] {autor_v} [/] [bright_red on grey93 b] {p_titulo} [/] [bright_green on grey93 b] {titulo_v} [/]')
             video.download(output_path=pastas, filename=new_name)
         except KeyboardInterrupt:
-            C.print('[r b] Cancelado por usuario [/]\n')
+            C.print('\n[r b] Cancelado por usuario [/]\n')
             break
         except AttributeError:
             # ! Contador de errores y agrega a una lista
             contador_error += 1
             lista_de_errores.append(f'{autor_v} - {titulo_v}')
-            pass
         else:
             # ! Si descarga sin problema adiciona al contador
             contador_descargas += 1
         finally:
             # ! Conta el total de interaciones urls
             contador_total += 1
-            pass
     else:
         C.rule('')
         C.print(f'\n-> Download [ {contador_descargas} / {p_url.length} ]\n')
