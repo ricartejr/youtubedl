@@ -17,14 +17,15 @@ class MyConfig:
 
     def dl(self):
         yt_filter = self.yt.streams.get_by_itag(22)
-        self.new_name = f'{self.author + " - " + fix_jr(self.title)}.mp4'
-        if path.isfile(self.path_carpetas + '/' + self.new_name) != True:
-            C.print(f'\n[r b] {self.new_name[:-4]} ')
-            yt_filter.download(output_path=self.path_carpetas, filename=self.new_name)
+        new_name = f'{self.author + " - " + fix_jr(self.title)}.mp4'
+        if path.isfile(self.path_carpetas + '/' + new_name) != True:
+            C.print(f'\n[r b] {new_name[:-4]}')
+            yt_filter.download(
+                output_path=self.path_carpetas, filename=new_name)
             print('\n')
         else:
             # ! File Exist
-            C.print(f'\n[r b] {self.new_name[:-4]} [/]\n')
+            C.print(f'\n[r b] {new_name[:-4]} [/]\n')
 
 
 def fix_jr(nome):
