@@ -19,7 +19,8 @@ class MyConfig:
     def dl(self):
         yt_filter = self.yt.streams.get_by_itag(22)
         new_name = f'{self.author + " - " + fix_jr(self.title)}.mp4'
-        if path.isfile(self.path_carpetas + '/' + new_name) != True:
+        teste = f'{self.path_carpetas + "/" + new_name}'
+        if path.isfile(teste) != True:
             C.print(f'\n[r b] {new_name[:-4]}')
             yt_filter.download(
                 output_path=self.path_carpetas, filename=new_name)
