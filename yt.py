@@ -4,11 +4,6 @@ from rich.console import Console
 from funciones.func import fix_jr, MyConfig
 from os import system, makedirs, path, walk
 
-"""
-https://www.youtube.com/watch?v=6vEUp3UFLIw
-https://www.youtube.com/playlist?list=PLFHT61jJ5V-4VyZyqUlXAdADsHD2W2NZa
-https://www.youtube.com/watch?v=HheT7RCxjDE&list=PLBAIwM2891DqJd0dAFPI93gwzFnbxVeiU
-"""
 
 system('cls')
 C = Console()
@@ -25,15 +20,12 @@ if url.find('playlist') != -1:
     for video in p_url.video_urls:
         try:
             video = YouTube(video, on_progress_callback=on_progress)
-
             title_v = fix_jr(video.title)
             author_v = video.author
             author_p = p_url.owner
             title_p = p_url.title
-
             pastas = f'{path.abspath(c_padron + "/" + author_p + "/" + fix_jr(title_p))}'
             makedirs(pastas, exist_ok=True)
-
             video = video.streams.get_by_itag(22)
             new_name = f'{author_v + " - " + title_v}.mp4'
             C.print(
